@@ -1,0 +1,45 @@
+1. Membuat Database: create database myshop;
+2. Membuat Table diDalam Database:
+
+a. Table Users:
+create table users (id integer AUTO_INCREMENT PRIMARY key, name varchar(255), email varchar(255), password varchar(255));
+
+b. Table Categories:
+create table categories (id integer AUTO_INCREMENT PRIMARY key, name varchar(255));
+
+c. Table Items:
+create table items (id integer AUTO_INCREMENT PRIMARY key, name varchar(255), description varchar(255), price integer, stock integer, category_id integer, foreign key (category_id) references categories(id));
+
+3. Memasukkan Data pada Table
+
+a. Insert Data Users:
+insert into users values ("",'John Doe', 'john@doe.com',"1234"),("",'Jane Doe', 'jane@doe.com',"123");
+
+b. Insert Data Categories:
+insert into categories values ("",'gadget'),("",'cloth'),("",'men'),("",'women'),("", 'branded');
+
+c. Insert Data Items:
+insert into items values ("",'Sumsang b50','hape keren dari merek sumsang',10520000,123,1),("",'Uniklooh','baju keren dari brand ternama', 5000000, 23, 2), ("", 'IMHO Watch', 'jam tangan anak yang jujur banget',450000,34,1);
+
+4. Mengambil Data dari Database
+
+a. Mengambil data users kecuali password:
+select id, name, email from users;
+
+b. Mengambil data items:
+select * from items where price > 1000000;
+
+select * from items where name like '%uniklo%';
+
+c. menampilkan data items join dengan kategori:
+
+select items.name, description,categories.name as kategori from items inner join categories on categories.id = items.category_id;
+
+5. Mengubah Data dari Database:
+
+update items set price = 2500000 where items.name = 'Sumsang b50';
+
+
+
+
+
